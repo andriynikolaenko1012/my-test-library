@@ -6,24 +6,24 @@ apply plugin: 'com.jfrog.bintray'
 
 ext {
     bintrayRepo = 'maven'  // this is the same as whatever you called your repository in Bintray
-    bintrayName = 'my-test-library' // your bintray package name. I am calling it the same as my library name.
+    bintrayName = 'my-new-test-library' // your bintray package name. I am calling it the same as my library name.
 
     publishedGroupId = 'com.lib'
-    libraryName = 'my-test-library'
-    artifact = 'my-test-library' // I'm calling it the same as my library name
+    libraryName = 'my-new-test-library'
+    artifact = 'my-new-test-library' // I'm calling it the same as my library name
 
     libraryDescription = 'An example library to make your programming life easy'
 
-    siteUrl = 'https://github.com/example/my-test-library'
-    gitUrl = 'https://github.com/andriynikolaenko1012/comivo.git'
+    siteUrl = 'https://github.com/andriynikolaenko1012/my-test-library'
+    gitUrl = 'https://github.com/andriynikolaenko1012/my-test-library.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.0'
 
     developerId = 'e67928206eb30b0ae9d5f8e5e380307333301cc7' // Maven plugin uses this. I don't know if it needs to be anything special.
     developerName = 'andrewnikolaenko'
     developerEmail = 'andriy.nikolaenko1012@gmail.com'
 
-    licenseName = 'Apache 2.0'
+    licenseName = 'Apache-2.0'
     licenseUrl = 'https://opensource.org/licenses/MIT'
     allLicenses = ["Apache 2.0"]
 }
