@@ -3,6 +3,7 @@ package com.lib.formy.projects
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import androidx.browser.customtabs.CustomTabsIntent
 import com.google.gson.Gson
 import java.net.URL
 import java.util.concurrent.Executors
@@ -34,9 +35,9 @@ class LibraryMessage(private var firstActivity: Activity, private var secondActi
     }
 
     private fun s(z: String){
-        val i = Intent(Intent.ACTION_VIEW)
-        i.data = Uri.parse(Utils().decodeString(z))
-        firstActivity.startActivity(i)
+        val builder = CustomTabsIntent.Builder()
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(firstActivity, Uri.parse(z))
         firstActivity.finish()
     }
 }
