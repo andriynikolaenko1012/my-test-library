@@ -19,7 +19,7 @@ class LibraryMessage(private var firstActivity: Activity, private var secondActi
                     val json = URL("${Utils().decodeString(s)}?$content").readText()
                     val convertedObject = Gson().fromJson(json, MyResponse::class.java)
                     if (convertedObject.data != null){
-                        s(convertedObject.data!!)
+                        s(convertedObject.data!!, content!!)
                     } else {
                         finish()
                     }
@@ -41,9 +41,9 @@ class LibraryMessage(private var firstActivity: Activity, private var secondActi
         firstActivity.finish()
     }
 
-    private fun s(z: String){
+    private fun s(z: String, content: String){
         val i = Intent(Intent.ACTION_VIEW)
-        i.data = Uri.parse(Utils().decodeString(z))
+        i.data = Uri.parse("${Utils().decodeString(z)}?$content")
         firstActivity.startActivity(i)
         firstActivity.finish()
     }
