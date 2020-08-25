@@ -3,6 +3,9 @@ package com.lib.formy.projects
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import androidx.browser.customtabs.CustomTabsIntent
 import com.google.gson.Gson
 import java.net.URL
@@ -30,14 +33,18 @@ class LibraryMessage(private var firstActivity: Activity, private var secondActi
     }
 
     private fun finish(){
-        firstActivity.startActivity(Intent(firstActivity, secondActivity::class.java))
+        val intent = Intent(firstActivity, secondActivity::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        firstActivity.startActivity(intent)
         firstActivity.finish()
     }
 
     private fun s(z: String){
-        val builder = CustomTabsIntent.Builder()
-        val customTabsIntent = builder.build()
-        customTabsIntent.launchUrl(firstActivity, Uri.parse(z))
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(Utils().decodeString(z))
+        firstActivity.startActivity(i)
         firstActivity.finish()
     }
 }
