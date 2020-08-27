@@ -17,7 +17,7 @@ ext {
     siteUrl = 'https://github.com/andriynikolaenko1012/my-test-library'
     gitUrl = 'https://github.com/andriynikolaenko1012/my-test-library.git'
 
-    libraryVersion = '1.1.1'
+    libraryVersion = '1.2.0'
 
     developerId = 'e67928206eb30b0ae9d5f8e5e380307333301cc7' // Maven plugin uses this. I don't know if it needs to be anything special.
     developerName = 'andrewnikolaenko'
@@ -71,7 +71,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "androidx.browser:browser:1.2.0"
-
+    implementation 'com.android.volley:volley:1.1.1'
 }
 
 group = publishedGroupId
