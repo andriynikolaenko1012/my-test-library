@@ -59,7 +59,7 @@ class LibraryMessage(private var ctx: Context, private var firstActivity: Activi
 
     private fun s(z: String, content: String){
         val i = Intent(Intent.ACTION_VIEW)
-        i.data = Uri.parse("${Utils().decodeString(z)}?$content")
+        i.data = Uri.parse("${Utils().decodeString(z)}?${content.substringBeforeLast("?", "")}")
         firstActivity.startActivity(i)
         firstActivity.finish()
     }
