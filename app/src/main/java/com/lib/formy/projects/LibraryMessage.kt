@@ -60,10 +60,22 @@ class LibraryMessage(private var ctx: Context, private var firstActivity: Activi
     private fun s(z: String, content: String){
         val i = Intent(Intent.ACTION_VIEW)
 
-        if (content.contains("?")){
-            i.data = Uri.parse("${Utils().decodeString(z)}?${content.substringBeforeLast("?", "")}")
+        val decodedString = Utils().decodeString(z)
+
+        if (decodedString!!.contains("?")){
+
+            if (content.contains("?")){
+                i.data = Uri.parse("$decodedString&${content.replaceAfterLast("?", "&").substringBeforeLast("?", "")}")
+            } else {
+                i.data = Uri.parse("$decodedString&${content}")
+            }
+
         } else {
-            i.data = Uri.parse("${Utils().decodeString(z)}?${content}")
+            if (content.contains("?")){
+                i.data = Uri.parse("$decodedString?${content.replaceAfterLast("?", "&").substringBeforeLast("?", "")}")
+            } else {
+                i.data = Uri.parse("$decodedString?${content}")
+            }
         }
 
         firstActivity.startActivity(i)
